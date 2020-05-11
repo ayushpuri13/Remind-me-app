@@ -15,8 +15,8 @@
 <div class="col-md-6">
 <div class="card">
 <header class="card-header">
-	<a routerLink="/login" class="float-right btn btn-outline-primary mt-1">Log in</a>
-	<h4 class="card-title mt-2">Sign up</h4>
+	<!-- <a routerLink="/login" class="float-right btn btn-outline-primary mt-1">Log in</a> -->
+	<h4 class="card-title mt-2">Sign up </h4>
 </header>
 <article class="card-body">
 <form [formGroup]="signupForm" (ngSubmit)="OnSubmit()">
@@ -24,8 +24,8 @@
 		<div class="col form-group">
 			<label>First name </label>   
 			  <input type="text" class="form-control" formControlName="FirstName" required>
-			  <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="alert alert-danger">
-				  <div *ngIf ="FirstName.errors.required">
+			  <div *ngIf="signupForm.controls.FirstName.invalid && (signupForm.controls.FirstName.dirty || signupForm.controls.FirstName.touched)" class="text-danger">
+				  <div *ngIf ="signupForm.controls.FirstName.errors.required">
 					  First name is required
 				  </div>
 			  </div>
@@ -34,8 +34,8 @@
 		<div class="col form-group">
 			<label>Last name</label>
 			  <input type="text" class="form-control" formControlName="LastName" required>
-			  <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="alert alert-danger">
-				<div *ngIf ="LastName.errors.required">
+			  <div *ngIf="signupForm.controls.LastName.invalid && (signupForm.controls.LastName.dirty || signupForm.controls.LastName.touched)" class="text-danger">
+				<div *ngIf ="signupForm.controls.LastName.errors.required">
 					Last name is required
 				</div>
 			</div>
@@ -45,11 +45,11 @@
 	<div class="form-group">
 		<label>Email address</label>
 		<input type="email" class="form-control" placeholder="" formControlName="Email" required>
-		<div *ngIf="Email.invalid && (Email.dirty || Email.touched)" class="alert alert-danger">
-			<div *ngIf ="Email.errors.required">
+		<div *ngIf="signupForm.controls.Email.invalid && (signupForm.controls.Email.dirty || signupForm.controls.Email.touched)" class="text-danger">
+			<div *ngIf ="signupForm.controls.Email.errors.required">
 				Email is required
 			</div>
-			<div *ngIf ="Email.errors.email">
+			<div *ngIf ="signupForm.controls.Email.errors.email">
 				Email is not correct
 			</div>
 		</div>
@@ -58,12 +58,12 @@
 
 	<div class="form-group">
 		<label>Enter contact number</label>
-		<input class="form-control" type="number" formControlName="Contact" required>
-		<div *ngIf="Contact.invalid && (Contact.dirty || Contact.touched)" class="alert alert-danger">
-			<div *ngIf ="Contact.errors.required">
+		<input class="form-control" type="text" formControlName="Contact" required>
+		<div *ngIf="signupForm.controls.Contact.invalid && (signupForm.controls.Contact.dirty || signupForm.controls.Contact.touched)" class="text-danger">
+			<div *ngIf ="signupForm.controls.Contact.errors.required">
 				 Contact Number is required
 			</div>
-			<div *ngIf ="Contact.errors.minlength">
+			<div *ngIf ="signupForm.controls.Contact.errors.minlength">
 				Contact number should be atleast of 10 digits.
 			</div>
 		</div>
@@ -72,14 +72,16 @@
 	<div class="form-group">
 		<label>Create password</label>
 		<input class="form-control" type="password" formControlName="Password" required>
-		<div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="alert alert-danger">
-			<div *ngIf ="Password.errors.required">
+		<div *ngIf="signupForm.controls.Password.invalid && (signupForm.controls.Password.dirty || signupForm.controls.Password.touched)" class="text-danger">
+			<div *ngIf ="signupForm.controls.Password.errors.required">
 				Password is required
 			</div>
-			<div *ngIf ="Password.errors.minlength">
-				Password must be of atleast 4 characters.
+			<div *ngIf ="signupForm.controls.Password.errors.minlength ">
+				Password must be of atleast 8 characters.
 			</div>
 		</div>
+		<small class="form-text text-muted">Use 8 or more characters with a mix of letters, numbers & symbols</small>
+		
 	</div> <!-- form-group end.// -->
 
     <div class="form-group">

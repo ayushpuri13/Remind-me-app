@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { ApiService } from '../Services/api.service';
 
 
 @Component({
@@ -9,22 +10,27 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  NewPassword:FormControl=new FormControl('',[Validators.required,Validators.minLength(4)]);
-  ConfirmPassword:FormControl=new FormControl('',[Validators.required,Validators.minLength(4)]);
+ 
   
+forgetpasswordForm:FormGroup;
 
-  constructor() { }
+  constructor(private api :ApiService) { }
 
   ngOnInit() {
+    this.initforgotpassForm();
   }
-  forgetpasswordForm=new FormGroup({
+
+  initforgotpassForm(){
+  this.forgetpasswordForm=new FormGroup({
+   Email:new FormControl('',Validators.required) 
     
-    NewPassword:this.NewPassword,
-    ConfirmPassword:this.ConfirmPassword
-      });
+        });
+      }
 
       OnSubmit(){
         console.log(this.forgetpasswordForm.value);
+this.api.ForgotPasswordApi(this.forgetpasswordForm.value.Email);
+        this.initforgotpassForm();
       }
 
 }

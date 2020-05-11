@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { AuthService } from '../Services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,26 +11,47 @@ import { FormControl,FormGroup,Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  FirstName:FormControl=new FormControl('',Validators.required);
-  LastName:FormControl=new FormControl('',Validators.required);
-  Contact:FormControl=new FormControl('',[Validators.required,Validators.minLength(10)]);
-  Email:FormControl=new FormControl('',[Validators.required,Validators.email]);
-Password:FormControl=new FormControl('',[Validators.required,Validators.minLength(4)])
 
-  signupForm=new FormGroup({
-    FirstName:this.FirstName,
-    LastName:this.LastName,
-    Contact:this.Contact,
-    Email:this.Email,
-    Password:this.Password,
+  signupForm:FormGroup;
+  isLoggedInFlag:any;
 
-  });
-  constructor() { }
+error:string;
+
+
+
+  constructor(private auth:AuthService, private router :Router) { }
 
   ngOnInit() {
+    this.isLoggedIn();
+    this.initsignupForm();
+    
   }
+
+
+  initsignupForm(){
+    this.signupForm=new FormGroup({
+      FirstName:new FormControl('',Validators.required),
+      LastName:new FormControl('',Validators.required),
+      Contact:new FormControl('',[Validators.required,Validators.minLength(10)]),
+      Email:new FormControl('',[Validators.required,Validators.email]),
+      Password:new FormControl('',[Validators.required,Validators.minLength(8)])
+  
+    });
+  
+  }
+
+
 OnSubmit(){
-  console.log(this.signupForm.value)
+  console.log(this.signupForm.value);
+this.auth.signup(this.signupForm.value);
+this.initsignupForm();
+}
+
+isLoggedIn(){
+  
+  if (this.auth.isLoggedIn == true){
+    this.router.navigate(['dashboard']);
+  }
 }
 
 }
