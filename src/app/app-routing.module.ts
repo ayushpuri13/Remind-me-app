@@ -8,13 +8,25 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VerifyScreenComponent } from './verify-screen/verify-screen.component';
 import { AuthGuard } from './shared/auth.guard';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ToDoComponent } from './to-do/to-do.component';
+import { AddEventComponent } from './dashboard/add-event/add-event.component';
 
 const routes: Routes = [{path:'',component:LoginComponent,pathMatch:'full'},
+                        // {path:'',redirectTo:'forgot-password' },
                         {path:'register',component:SignupComponent},
                         {path:'verify-email',component:VerifyScreenComponent},
-                        {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
-                        {path:'forgot-password',component:ForgetPasswordComponent,canActivate:[AuthGuard]},
-                        {path:'reset-password',component:ResetPasswordComponent,canActivate:[AuthGuard]},
+                        {path:'dashboard',
+                        component:DashboardComponent,
+                        canActivate:[AuthGuard],
+                        children:[
+                          {path:'add-event',component:AddEventComponent,canActivate:[AuthGuard]},
+                          {path:'show-event',component:ToDoComponent,canActivate:[AuthGuard]},
+                          {path:'',component:ToDoComponent,canActivate:[AuthGuard]},
+                          {path:'**',component:ToDoComponent,canActivate:[AuthGuard]}         
+                        ]},
+                        
+                        {path:'forgot-password',component:ForgetPasswordComponent},
+                        {path:'reset-password',component:ResetPasswordComponent},
                         {path:'change-password',component:ChangePasswordComponent,canActivate:[AuthGuard]},
                         {path:'login',component:LoginComponent},
 ];

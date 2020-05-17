@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { AuthService } from '../Services/auth.service';
+import { ApiService } from '../Services/api.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,7 +17,15 @@ export class ResetPasswordComponent implements OnInit {
   
 
 
-  constructor() { }
+  constructor(private auth :AuthService,
+    private api :ApiService,
+    private toastr:ToastrService,
+    private router :Router ) 
+     {
+         if(!this.auth.redirectedToken){
+            this.router.navigate(['login']);
+     }
+   }
 
   ngOnInit() {
     this.initresetpassForm();
@@ -31,6 +43,13 @@ export class ResetPasswordComponent implements OnInit {
     
     OnSubmit(){
         console.log(this.resetpasswordForm.value);
+        if(this.resetpasswordForm.value.NewPassword==this.resetpasswordForm.value.ConfirmPassword){
+        this.api.ResetPassword(this.auth.redirectedToken,this.resetpasswordForm.value.NewPassword);
+        }
+        else
+        {
+          this.toastr.error('Passwords does not match','');
+        }
         this.initresetpassForm();
       }
 

@@ -18,6 +18,7 @@ import { AuthInterceptor } from './shared/Auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ToDoComponent } from './to-do/to-do.component';
+import { AddEventComponent } from './dashboard/add-event/add-event.component';
 
 
 @NgModule({
@@ -30,9 +31,11 @@ import { ToDoComponent } from './to-do/to-do.component';
     DashboardComponent,
     VerifyScreenComponent,
     ResetPasswordComponent,
-    ToDoComponent
+    ToDoComponent,
+    AddEventComponent,
+
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,

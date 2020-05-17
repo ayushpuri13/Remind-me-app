@@ -1,0 +1,116 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<body style="background-color: #BBDEFB;">
+<div class="container" style="background-color: #BBDEFB;">
+
+<hr>
+
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+	<!-- <a routerLink="/login" class="float-right btn btn-outline-primary mt-1">Log in</a> -->
+	<h4 class="card-title mt-2">Add Event </h4>
+</header>
+<article class="card-body">
+<form [formGroup]="addEventForm" >
+
+		<div class="form-group">
+			<label>Title </label>
+			  <input type="text" class="form-control" formControlName="Title" placeholder="Title" required>
+			  <div *ngIf="addEventForm.controls.Title.invalid && (addEventForm.controls.Title.dirty || addEventForm.controls.Title.touched)" class="text-danger">
+				  <div *ngIf ="addEventForm.controls.Title.errors.required">
+					  Title is required
+				  </div>
+			  </div>
+		</div> <!-- form-group end.// -->
+
+		<div class="form-group">
+			<label>Description (Optional)</label>
+			  <textarea rows="3" type="text" class="form-control" formControlName="Description" placeholder="Description"></textarea>
+			  <!-- <div *ngIf="addEventForm.controls.Description.invalid && (addEventForm.controls.Description.dirty || addEventForm.controls.Description.touched)" class="text-danger">
+				<div *ngIf ="addEventForm.controls.Description.errors.required">
+					Last name is required
+				</div> -->
+			<!-- </div> -->
+		</div> <!-- form-group end.// -->
+
+    <div class="form-row">
+    <div class="col form-group">
+		<label>Date</label>
+		<input type="date" class="form-control" min="min"  max="2020"  placeholder="" formControlName="Date" required>
+		<div *ngIf="addEventForm.controls.Date.invalid && (addEventForm.controls.Date.dirty || addEventForm.controls.Date.touched)" class="text-danger">
+			<div *ngIf ="addEventForm.controls.Date.errors.required">
+				Date is required
+			</div>
+			<div *ngIf ="addEventForm.controls.Date.errors.min">
+				Date is not correct
+			</div>
+		</div>
+	</div> <!-- form-group end.// -->
+
+	<div class=" col form-group">
+		<label>Time</label>
+		<input class="col form-control" type="time"  formControlName="Time" required>
+		<div *ngIf="addEventForm.controls.Time.invalid && (addEventForm.controls.Time.dirty || addEventForm.controls.Time.touched)" class="text-danger">
+			<div *ngIf ="addEventForm.controls.Time.errors.required">
+				 Time  is required
+			</div>
+			<!-- <div *ngIf ="addEventForm.controls.Time.errors.Time">
+				Time number should be atleast of 10 digits.
+			</div> -->
+		</div>
+	</div> <!-- form-group end.// -->
+</div><!-- form-row end.// -->
+
+	<div class="form-group">
+
+	   <div class="custom-control custom-switch" style="font-size: 17px;padding-right: 10px;">
+        <input type="checkbox" class="custom-control-input"  id="customSwitch1"  formControlName="Reminder" checked="">
+        <label class="custom-control-label" for="customSwitch1">Reminder</label></div>
+
+
+
+		<!-- <div *ngIf="addEventForm.controls.Reminder.invalid && (addEventForm.controls.Reminder.dirty || addEventForm.controls.Reminder.touched)" class="text-danger">
+			<div *ngIf ="addEventForm.controls.Reminder.errors.required">
+				Reminder is required
+			</div> -->
+			<!-- <div *ngIf ="addEventForm.controls.Reminder.errors.minlength ">
+				Reminder must be of atleast 8 characters.
+			</div> -->
+		<!-- </div> -->
+		<small class="form-text text-muted">A reminder mail will be sent before 15 minutes of scheduled time </small>
+
+    </div>
+<!-- form-group end.// -->
+
+    <div class="form-group">
+        <button *ngIf="!EditUser" type="submit" class="btn btn-primary btn-block" [disabled]="!addEventForm.valid" (click)="OnSubmit()"> Add  </button>
+		<button *ngIf="EditUser" type="submit" class="btn btn-primary btn-block" [disabled]="!addEventForm.valid" (click)="OnEditClick()"> Update  </button>
+	</div> <!-- form-group// -->
+
+</form>
+</article> <!-- card-body end .// -->
+
+</div> <!-- card.// -->
+</div> <!-- col.//-->
+
+</div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->
+
+<br><br><br><br><br><br>
+<article class="bg-secondary mb-3">
+<div class="card-body text-center">
+    <h3 class="text-white mt-3">Prashantanam pvt lmtd.</h3>
+</div><br><br>
+</article>
+</body>

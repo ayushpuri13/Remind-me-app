@@ -6,29 +6,74 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 <!-- Start your code here -->
-<div class="panel panel-default event">
+
+<h6 style="text-align: center" *ngIf="UserEventList.length===0 || !UserEventList">You don't have any active events.Click add events to create one!!</h6>
+
+<!--<div *ngFor=" let Event of UserEventList;let i=index">-->
+
+<!--  <div class="col-xl-3 col-md-6">-->
+<!--    <div class="card bg-primary text-white mb-6">-->
+<!--      <div class="card-body">Primary Card</div>-->
+<!--      <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-xl-3 col-md-6">-->
+<!--    <div class="card bg-warning text-white mb-4">-->
+<!--      <div class="card-body">Warning Card</div>-->
+<!--      <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-xl-3 col-md-6">-->
+<!--    <div class="card bg-success text-white mb-4">-->
+<!--      <div class="card-body">Success Card</div>-->
+<!--      <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-xl-3 col-md-8">-->
+<!--    <div class="card bg-danger text-white mb-8">-->
+<!--      <div class="card-body">Danger Card</div>-->
+<!--      <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--        <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--        <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="panel panel-default event" *ngFor=" let Event of UserEventList;let i=index">
   <div class="panel-body">
+    <small style="text-align: -moz-right;font-size:xx-small">{{Event.event_time  }}</small>
     <div class="rsvp col-xs-2 col-sm-2">
-      <i>18</i>
-      <i>nov</i>
-      <div class="hidden-xs">
-        <span class="fa fa-thumbs-up fa-2x"></span>
-        <span class="fa fa-thumbs-down fa-2x"></span>
+      <i>{{Event.event_date | date: 'dd' }}</i>
+      <i>{{Event.event_date | date: 'MMM' }}</i><br>
+      <i>{{Event.event_time  }}</i>
+      <div class="hidden-xs" *ngIf="Event.set_reminder==true">
+        <i class="fas fa-bell fa-2x"></i>
       </div>
     </div>
     <div class="info col-xs-8 col-sm-7">
-      Event Title
-      <div class="visible-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elitero..</div>
+      {{Event.name}}
+      <div class="visible-xs"></div>
       <div class="hidden-xs">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
-            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li role="presentation" class="active"><a [routerLink]='["/dashboard/add-event"]' (click)="Edit(Event,i)" aria-controls="location" role="tab" data-toggle="tab">Edit</a></li>
+            <li role="presentation"><a (click)="Delete(Event,i)" aria-controls="profile" role="tab" data-toggle="tab">Delete</a></li>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="location">Location</div>
+            <div role="tabpanel" class="tab-pane active" id="location">{{Event.description}}</div>
             <div role="tabpanel" class="tab-pane" id="profile">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis feugiat sem, eu sagittis libero. Duis non odio ut nibh volutpat tempus eget interdum elit. 
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis feugiat sem, eu sagittis libero. Duis non odio ut nibh volutpat tempus eget interdum elit.
             </div>
           </div>
         </div>
@@ -48,10 +93,10 @@
             </div>
         </div>
          -->
-         
-  
-    
-  
-  
+
+
+
+
+
   </div>
 </div>

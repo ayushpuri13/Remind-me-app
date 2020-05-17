@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  Add:boolean;
+  currentUserName:string;
+
+  constructor(private api : ApiService,private auth :AuthService) {
+
+    this.currentUserName=this.auth.currentUserName;
+   }
 
   ngOnInit() {
+
+    this.Add=true;
+
   }
+
+  ChangeTab(){
+this.Add=!this.Add
+  }
+
+  Logout(){
+    this.auth.logout();
+  }
+
 
 }

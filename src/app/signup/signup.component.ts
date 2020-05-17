@@ -19,7 +19,9 @@ error:string;
 
 
 
-  constructor(private auth:AuthService, private router :Router) { }
+  constructor(private auth:AuthService, private router :Router) {
+    // this.isVerifiedUser();
+   }
 
   ngOnInit() {
     this.isLoggedIn();
@@ -52,6 +54,13 @@ isLoggedIn(){
   if (this.auth.isLoggedIn == true){
     this.router.navigate(['dashboard']);
   }
+}
+
+isVerifiedUser(){
+  if(this.auth.isVerified==false){
+    console.log()
+    this.router.navigate(['verify-email']);
+   }
 }
 
 }
