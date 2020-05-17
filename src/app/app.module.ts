@@ -11,7 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VerifyScreenComponent } from './verify-screen/verify-screen.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
+
 import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/Auth.interceptor';
@@ -43,14 +43,6 @@ import { AddEventComponent } from './dashboard/add-event/add-event.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: function  tokenGetter() {
-             return     localStorage.getItem('access_token');},
-        whitelistedDomains: ['localhost:3000'],
-        blacklistedRoutes: ['http://localhost:3000/auth/login']
-      }
-    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-right',

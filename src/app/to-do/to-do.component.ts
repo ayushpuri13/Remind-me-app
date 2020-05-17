@@ -35,7 +35,8 @@ export class ToDoComponent implements OnInit {
 
   Delete(Event,i){
     console.log(Event,i);
-   let flag=confirm(' Delete the event?');
+    let flag=true;
+    flag=confirm(' Delete the event?');
    if(flag==true){
     if(this.UserEventList[i].name==Event.name){
       this.api.DeleteEvent(this.UserEventList[i].id);
