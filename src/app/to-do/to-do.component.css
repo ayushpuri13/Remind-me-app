@@ -9,6 +9,7 @@
   }
   .event .panel-body > div {
     padding: 0 10px;
+    float:left;
   }
   .event .panel-body .rsvp {
     border-left: none;
@@ -19,7 +20,7 @@
     color: white;
     height: 100%;
   }
-  
+
   .event .rsvp > div {
     font-size: 12px;
     position: absolute;
@@ -27,7 +28,7 @@
     background: #42A5F5;
     width: 100%;
   }
-  
+
   .event .rsvp i {
     font-size: 2em;
     display: block;
@@ -39,7 +40,7 @@
       font-size:1.5em;
       margin-top:-23px;
   }
-  
+
   .event .rsvp span {
     cursor: pointer;
     padding: 0 5px;
@@ -52,15 +53,15 @@
   .event .rsvp span:hover{
     color: #1565C0;
   }
-  
+
   .event .info{
     font-size: 28px;
   }
-  
+
   .event .info > div, .event .info > ul{
     font-size: 12px;
   }
-  
+
   .event .author .profile-image {
     position: absolute;
     background: white;
@@ -72,12 +73,12 @@
     z-index: 1;
     top:4px;
   }
-  
+
   .event .author img {
       width:100%;
       border-radius:50%;
   }
-  
+
   /* Overwrites */
   .nav-tabs a {
     background: #90CAF9;
@@ -96,22 +97,24 @@
     border-radius: 0 10px;
     padding: 10px;
   }
-  
+
   /* Small devices (tablets, 768px and up) */
-  @media (min-width: 768px) { 
+  @media (min-width: 768px) {
       .event .panel-body {
           height:158px;
+
+        min-height:1px;
       }
-      
+
       .event .rsvp {
           min-height:100%;
       }
-      
+
       .event .rsvp i {
           font-size:4em;
           top:5%;
       }
-      
+
       .event .panel-body .author {
         position: relative;
         color: #2196F3;
@@ -165,13 +168,13 @@
         border-radius: 50%;
       }
   }
-  
+
   /* Medium devices (desktops, 992px and up) */
-  @media (min-width: 992px) { 
+  @media (min-width: 992px) {
       .event .profile {
         left: 17%;
       }
   }
-  
+
   /* Large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {  }

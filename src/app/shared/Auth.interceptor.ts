@@ -32,7 +32,6 @@ apiUrl:any='https://remind-me-backend.herokuapp.com';
 
            console.log(err);
            if(err.status==401){
-              console.log('i m in err')
             let params={
                 access:localStorage.getItem('access_token'),
                 refresh:localStorage.getItem('refresh_token')
@@ -46,7 +45,8 @@ apiUrl:any='https://remind-me-backend.herokuapp.com';
                 console.log(data);
                   localStorage.setItem('access_token',data.access);
                   localStorage.setItem('refresh_token',data.refresh);
-
+                  console.log('i am going to send req again',this.addToken(req,data.access));
+                  return  next.handle(this.addToken(req,data.access));
 
 
                 }
