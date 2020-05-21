@@ -10,6 +10,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ToDoComponent } from './to-do/to-do.component';
 import { AddEventComponent } from './dashboard/add-event/add-event.component';
+import {Resolver} from "./shared/resolver";
 
 const routes: Routes = [{path:'',component:LoginComponent,pathMatch:'full'},
                         // {path:'',redirectTo:'forgot-password' },
@@ -20,11 +21,11 @@ const routes: Routes = [{path:'',component:LoginComponent,pathMatch:'full'},
                         canActivate:[AuthGuard],
                         children:[
                           {path:'add-event',component:AddEventComponent,canActivate:[AuthGuard]},
-                          {path:'show-event',component:ToDoComponent,canActivate:[AuthGuard]},
-                          {path:'',component:ToDoComponent,canActivate:[AuthGuard]},
-                          {path:'**',component:ToDoComponent,canActivate:[AuthGuard]}         
+                          {path:'show-event',component:ToDoComponent,canActivate:[AuthGuard],resolve:{UserEventList:Resolver}},
+                          {path:'',component:ToDoComponent,canActivate:[AuthGuard],resolve:{UserEventList:Resolver}},
+                          {path:'**',component:ToDoComponent,canActivate:[AuthGuard],resolve:{UserEventList:Resolver}}
                         ]},
-                        
+
                         {path:'forgot-password',component:ForgetPasswordComponent},
                         {path:'reset-password',component:ResetPasswordComponent},
                         {path:'change-password',component:ChangePasswordComponent,canActivate:[AuthGuard]},

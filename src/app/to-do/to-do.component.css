@@ -59,7 +59,7 @@
   }
 
   .event .info > div, .event .info > ul{
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .event .author .profile-image {
@@ -83,6 +83,7 @@
   .nav-tabs a {
     background: #90CAF9;
     color: white;
+
   }
   .info .nav-tabs li.active a {
     background-color: #448AFF;

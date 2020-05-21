@@ -10,7 +10,7 @@ import { Form } from '@angular/forms';
 export class ApiService {
 
   apiUrl:any='https://remind-me-backend.herokuapp.com';
-  UserEventList:any=[];
+  UserEventList:any=null;
   EditEvent:string=null;
 
   constructor(private http : HttpClient,
@@ -102,15 +102,18 @@ console.log(post)
 }
 
 
-getEventList(){
-  return this.http.get(this.apiUrl + '/api/v1/events').subscribe(
-    data=>{
-      if(data){
-        console.log(data);
-        this.UserEventList=data;
-      }
-    }
-  )
+getEventList()
+{
+  return this.http.get(this.apiUrl + '/api/v1/events');
+
+  //   .subscribe(
+  //   data=>{
+  //     if(data){
+  //       console.log(data);
+  //       this.UserEventList=data;
+  //     }
+  //   }
+  // )
 }
 
 

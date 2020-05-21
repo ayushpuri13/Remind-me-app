@@ -13,7 +13,7 @@
 <!--    </head>-->
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="assets/assets3/index.html">Remind-Me</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">11<i class="fa fa-align-justify" aria-hidden="true">11</i></button
+            <a class="navbar-brand" href="/dashboard/show-event">Remind-Me</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">11<i class="fa fa-align-justify" aria-hidden="true">11</i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -25,16 +25,31 @@
             </form>
             <!-- Navbar-->
 
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown">
-                    <a  class="nav-link dropdown-toggle" id="userDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="change-password" >Change Password</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" (click)="Logout()">Logout</a>
-                    </div>
-                </li>
-            </ul>
+
+          <div class="row">
+            <div class="col">
+              <div ngbDropdown class="d-inline-block" display="dynamic" placement="bottom-right">
+                <button class="btn btn-outline-primary" display="dynamic" placement="bottom-right"  id="dropdownBasic1" ngbDropdownToggle><i class="fas fa-user fa-fw"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem routerLink="/change-password"><i class="fa fa-lock" aria-hidden="true"></i>  Change Password</button>
+                  <button ngbDropdownItem (click)="Logout()"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>  Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+<!--            <ul class="navbar-nav ml-auto ml-md-0">-->
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a  class="nav-link dropdown-toggle" id="userDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>-->
+<!--                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">-->
+<!--                        <a class="dropdown-item" href="change-password" >Change Password</a>-->
+<!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item" (click)="Logout()">Logout</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -42,52 +57,62 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="assets/assets3/index.html"
+                            <a class="nav-link" href="/dashboard/show-event"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="verify-email/#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                            <a class="nav-link collapsed" href="/dashboard/show-event" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
+                                About Us
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="assets/assets3/layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                          <a class="nav-link collapsed" href="/dashboard/show-event" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                          ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Help
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
+
+<!--                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">-->
+<!--                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="assets/assets3/layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>-->
+<!--                            </div>-->
+<!--                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>-->
+<!--                                Pages-->
+<!--                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div-->
+<!--                            ></a>-->
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
-                                        >Authentication
+                                    <a class="nav-link collapsed" href="/dashboard/show-event" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
+                                        >Help
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="assets/assets3/login.html">Login</a><a class="nav-link" href="assets/assets3/register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
-                                        >Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="assets/assets3/401.html">401 Page</a><a class="nav-link" href="assets/assets3/404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
-                                    </div>
-                                </nav>
+                                    ></a></nav>
+<!--                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">-->
+<!--                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="assets/assets3/login.html">Login</a><a class="nav-link" href="assets/assets3/register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>-->
+<!--                                    </div>-->
+<!--                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"-->
+<!--                                        >Error-->
+<!--                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div-->
+<!--                                    ></a>-->
+<!--                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">-->
+<!--                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="assets/assets3/401.html">401 Page</a><a class="nav-link" href="assets/assets3/404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>-->
+<!--                                    </div>-->
+<!--                                </nav>-->
+<!--                            </div>-->
+<!--                            <div class="sb-sidenav-menu-heading">Addons</div>-->
+<!--                            <a class="nav-link" href="assets/assets3/charts.html"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>-->
+<!--                                Charts</a-->
+<!--                            ><a class="nav-link" href="assets/assets3/tables.html"-->
+<!--                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>-->
+<!--                                Tables</a-->
+<!--                            >-->
+<!--                        </div>-->
+
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="assets/assets3/charts.html"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts</a
-                            ><a class="nav-link" href="assets/assets3/tables.html"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables</a
-                            >
                         </div>
                     </div>
+
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         {{currentUserName}}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ApiService } from '../Services/api.service';
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -14,13 +15,17 @@ export class ToDoComponent implements OnInit {
 
   UserEventList:any=[];
 
-  constructor( private api :ApiService) {
-    this.api.getEventList();
+  constructor( private api :ApiService,private route:ActivatedRoute) {
+
 
    }
 
   ngOnInit() {
-    this.UserEventList=this.api.UserEventList;
+    this.route.data.subscribe(data=>
+    {
+      console.log(data);
+      this.UserEventList=data.UserEventList;
+    })
     console.log(this.UserEventList);
 
   }

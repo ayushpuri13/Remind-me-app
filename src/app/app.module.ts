@@ -19,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ToDoComponent } from './to-do/to-do.component';
 import { AddEventComponent } from './dashboard/add-event/add-event.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {Resolver} from "./shared/resolver";
+
 
 
 @NgModule({
@@ -41,6 +44,7 @@ import { AddEventComponent } from './dashboard/add-event/add-event.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -50,6 +54,7 @@ import { AddEventComponent } from './dashboard/add-event/add-event.component';
     }),
   ],
   providers: [
+  Resolver,
 
     {
       provide: HTTP_INTERCEPTORS,

@@ -4,7 +4,7 @@ import {HttpInterceptor} from "@angular/common/http";
 import { Observable,throwError,of } from 'rxjs';
 import { AuthService } from '../Services/auth.service';
 import 'rxjs/add/operator/catch';
-import { catchError,mergeMap,flatMap, tap } from 'rxjs/operators';
+import { catchError,mergeMap,flatMap, tap,switchMap } from 'rxjs/operators';
 import 'rxjs/add/operator/mergeMap';
 import { Router } from '@angular/router';
 
@@ -38,23 +38,41 @@ apiUrl:any='https://remind-me-backend.herokuapp.com';
             }
            if(params.refresh){
 
-            this.authService.refreshToken(params).toPromise().then((data:any)=>{
-                if(!data) return;
-                else{
-                console.log('i m in ref int')
-                console.log(data);
-                  localStorage.setItem('access_token',data.access);
-                  localStorage.setItem('refresh_token',data.refresh);
-                  console.log('i am going to send req again',this.addToken(req,data.access));
-                  return  next.handle(this.addToken(req,data.access));
+
+             return this.authService.refreshToken(params).pipe(tap(token=> {
+               console.log(token);
+               localStorage.setItem('access_token', token.access);
+               localStorage.setItem('refresh_token', token.refresh);
+
+             }),
+            switchMap(token=>{
+            console.log('i am going to send req again', this.addToken(req, token.access));
+            req = this.addToken(req, token.access);
+
+            return  next.handle(req);
+          }))
 
 
-                }
-                 console.log('i am going to send req again',this.addToken(req,data.access));
-                 return  next.handle(this.addToken(req,data.access));
 
-        }
-        )
+
+
+        //   this.authService.refreshToken(params).toPromise().then((data:any)=>{
+        //         if(!data) return;
+        //         else{
+        //         console.log('i m in ref int')
+        //         console.log(data);
+        //           localStorage.setItem('access_token',data.access);
+        //           localStorage.setItem('refresh_token',data.refresh);
+        //           console.log('i am going to send req again',this.addToken(req,data.access));
+        //           req=this.addToken(req,data.access);
+        //
+        //           return  next.handle(req);
+        //         }
+        //          // console.log('i am going to send req again',this.addToken(req,data.access));
+        //          // return  next.handle(this.addToken(req,data.access));
+        //
+        // }
+        // )
         //      console.log('i m outside req')
         // return  next.handle(this.addToken(req,this.authService.getToken()));
 
@@ -71,11 +89,12 @@ apiUrl:any='https://remind-me-backend.herokuapp.com';
 
  addToken(req:HttpRequest<any>,token:string){
       console.log(token);
-   return req=req.clone({
+    req=req.clone({
         setHeaders:{
             'Authorization':'Bearer ' + token
         }
     });
+    return req;
 }
 
 }
