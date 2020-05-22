@@ -21,7 +21,9 @@ loginForm:FormGroup;
   constructor(private auth:AuthService,private route :ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+
     this.redirectTo();
+    this.isLoggedIn();
   this.initloginForm();
   }
 
@@ -55,5 +57,12 @@ redirectTo(){
     }}
   })
 }
+
+  isLoggedIn(){
+
+    if (this.auth.isLoggedIn == true){
+      this.router.navigate(['dashboard']);
+    }
+  }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ApiService } from 'src/app/Services/api.service';
+import {NgbDate, NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-add-event',
@@ -11,9 +12,11 @@ import { ApiService } from 'src/app/Services/api.service';
 export class AddEventComponent implements OnInit {
 
 addEventForm:FormGroup;
-min:any;
+min:any=null;
 EditUser:any=null;
 
+
+isDisabled:any=null;
 
   constructor(private api : ApiService) {
 this.SetMinDate();
@@ -45,9 +48,20 @@ this.SetMinDate();
        this.EditUser=this.api.EditEvent;
       console.log(this.EditUser);
 
+     let timesplit=this.EditUser['event_time'].split(":");
+      let Time={
+        "hour":timesplit[0],
+        "minute":timesplit[1],
+        "second":timesplit[2]
+      }
+    let TimeS= JSON.stringify(Time)
+    //   Time=JSON.parse('TimeS')
+
+      console.log(Time);
+
       this.addEventForm.setValue({Title:this.EditUser['name'],
                                   Description:this.EditUser['description'],
-                                  Time:this.EditUser['event_time'],
+                                  Time:Time,
                                   Date:this.EditUser['event_date'],
                                   Reminder:this.EditUser['set_reminder']
     });
@@ -64,7 +78,12 @@ this.SetMinDate();
 let year=dt.getFullYear();
 let month =dt.getMonth();
 let date=dt.getDate();
-this.min=year+"-"+month+"-"+date;
+this.min={year:year,
+       month:month,
+       date:date}
+     let date1:NgbDate=new NgbDate(this.min.year,this.min.month,this.min.date);
+      this.isDisabled =(date1:NgbDate,current:{month1:number})=>{date1.before({year:this.min.year,month:this.min.month,day:this.min.date})};
+
 console.log(this.min)
     }
 }

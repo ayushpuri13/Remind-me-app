@@ -1,3 +1,11 @@
+button:disabled
+{
+  cursor: not-allowed;
+}
+
+
+
+
 .note
 {
     text-align: center;

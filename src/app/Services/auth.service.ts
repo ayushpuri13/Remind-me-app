@@ -66,10 +66,15 @@ get isLoggedIn(){
 }
 
   logout(){
+    let refresh=localStorage.getItem('refresh_token')
+    this.httpClient.post(this.apiUrl + "/api/v1/auth/logout",{refresh});
+
+
     let remove_access=localStorage.removeItem('access_token');
     let remove_refresh=localStorage.removeItem('refresh_token');
     if(remove_refresh==null && remove_access==null){
       this.router.navigate(['login']);
+
    } }
 
    signup(signupForm:any){
@@ -173,7 +178,7 @@ ValidateEmailToken(){
       console.log(res);
    localStorage.setItem('access_token',res.tokens['access']);
    localStorage.setItem('refresh_token',res.tokens['refresh']);
-   this.toastr.success('Login Successful','');
+   this.toastr.success('','Email Verified Successfully');
    this.api.getEventList();
    this.isVerified=res.is_active;
    this.router.navigate(['dashboard']);

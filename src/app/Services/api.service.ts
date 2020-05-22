@@ -83,7 +83,7 @@ addEventApi(form){
     name:form.Title,
     description:form.Description,
     event_date:form.Date,
-    event_time:form.Time + ":00 " ,
+    event_time:form.Time.hour+ ":"+form.Time.minute+ ":"+form.Time.second,
     set_reminder:form.Reminder
 
   }
@@ -122,7 +122,7 @@ UpdateEvent(form){
     name:form.Title,
     description:form.Description,
     event_date:form.Date,
-    event_time:form.Time + ":00",
+    event_time:form.Time.hour+ ":"+form.Time.minute+ ":"+form.Time.second,
     set_reminder:form.Reminder
 
   }
