@@ -28,6 +28,7 @@ import {ButtonModule} from 'primeng/button';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import {CalendarModule} from 'primeng/calendar';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -47,6 +48,7 @@ import {CalendarModule} from 'primeng/calendar';
     ResetPasswordComponent,
     ToDoComponent,
     AddEventComponent,
+    HeaderComponent,
 
   ],
 

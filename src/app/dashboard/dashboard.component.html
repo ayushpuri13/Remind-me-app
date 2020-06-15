@@ -11,17 +11,32 @@
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 <!--    </head>-->
+
+
     
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="/dashboard/show-event">Remind-Me</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">11<i class="fa fa-align-justify" aria-hidden="true">11</i></button
+        <nav style="height:70px;" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="/dashboard/show-event">
+<img src="../assets/images/r-logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Remind-Me
+  </a>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/dashboard/show-event">     Events <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link disabled" aria-disabled="true" href="#">Contact Us</a>
+      </li>
+      <li class="nav-item disabled">
+        <a class="nav-link" href="/dashboard/show-event/#">About Us</a>
+      </li>
+      
+      
+    </ul>
+  </div>
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" [(ngModel)]="searchword" (input)="searchInput()" name="searchword" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
+            <div style="color: white;" class="class">Hi {{currentUserName}}  ,</div>
             </form>
             <!-- Navbar-->
 

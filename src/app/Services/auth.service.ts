@@ -39,7 +39,7 @@ export class AuthService {
   this.isVerified=res.is_active;
   this.router.navigate(['dashboard']);
   this.currentUserEmail=email;
-  this.currentUserName=res.first_name + " " + res.last_name;
+  this.currentUserName=res.first_name ;
 }},
   error=>{
 if(error){
@@ -183,7 +183,7 @@ ValidateEmailToken(){
    this.isVerified=res.is_active;
    this.router.navigate(['dashboard']);
    this.currentUserEmail=res.email;
-   this.currentUserName=res.first_name + " " + res.last_name;
+   this.currentUserName=res.first_name ;
  }},
    error=>{
  if(error){
