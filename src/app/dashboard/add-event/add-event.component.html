@@ -32,13 +32,13 @@
 		</div> <!-- form-group end.// -->
 
 		<div class="form-group">
-			<label>Description (Optional)</label>
-			  <textarea rows="3" type="text" class="form-control" formControlName="Description" placeholder="Description"></textarea>
-			  <!-- <div *ngIf="addEventForm.controls.Description.invalid && (addEventForm.controls.Description.dirty || addEventForm.controls.Description.touched)" class="text-danger">
+			<label>Description </label>
+			  <textarea rows="3" type="text" class="form-control" formControlName="Description" placeholder="Description" required></textarea>
+			   <div *ngIf="addEventForm.controls.Description.invalid && (addEventForm.controls.Description.dirty || addEventForm.controls.Description.touched)" class="text-danger">
 				<div *ngIf ="addEventForm.controls.Description.errors.required">
-					Last name is required
-				</div> -->
-			<!-- </div> -->
+					Description  is required
+				</div>
+			 </div>
 		</div> <!-- form-group end.// -->
 
 
@@ -54,10 +54,13 @@
 <!--    </div>-->
 <!--  </div>-->
 
-      <div class="form-row">
+      <div >
     <div class="col form-group">
 		<label>Date</label>
-		<input type="date" class="form-control" min-date="min"  max="2020"  placeholder="" formControlName="Date" required>
+<!--		<input type="date" class="form-control" min-date="min"  max="2020"  placeholder="" formControlName="Date" required>-->
+      <div class="p-col-24 p-md-6">
+    <p-calendar formControlName="Date" name="Date" required [defaultDate]="min" [minDate]="min"    [readonlyInput]="true"></p-calendar>
+      </div>
 		<div *ngIf="addEventForm.controls.Date.invalid && (addEventForm.controls.Date.dirty || addEventForm.controls.Date.touched)" class="text-danger">
 			<div *ngIf ="addEventForm.controls.Date.errors.required">
 				Date is required

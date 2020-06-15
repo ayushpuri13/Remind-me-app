@@ -12,6 +12,7 @@ export class ApiService {
   apiUrl:any='https://remind-me-backend.herokuapp.com';
   UserEventList:any=null;
   EditEvent:string=null;
+  searchword:string;
 
   constructor(private http : HttpClient,
               private toastr : ToastrService,
@@ -77,12 +78,15 @@ ResetPassword(token,new_password){
 
 addEventApi(form){
   console.log(form);
-
+  let dt=new Date(form.Date)
+  let year=dt.getFullYear();
+  let month =dt.getMonth();
+  let date=dt.getDate();
 
   let post={
     name:form.Title,
     description:form.Description,
-    event_date:form.Date,
+    event_date:year+"-"+month+"-"+date,
     event_time:form.Time.hour+ ":"+form.Time.minute+ ":"+form.Time.second,
     set_reminder:form.Reminder
 

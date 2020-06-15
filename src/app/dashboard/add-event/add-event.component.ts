@@ -33,7 +33,7 @@ this.SetMinDate();
   initaddEventForm(){
     this.addEventForm=new FormGroup({
       Title:new FormControl('',Validators.required),
-      Description:new FormControl(''),
+      Description:new FormControl('',Validators.required),
       Date:new FormControl('',[Validators.required,Validators.min(this.min)]),
       Time:new FormControl('',Validators.required),
       Reminder:new FormControl(true,Validators.required),
@@ -81,6 +81,7 @@ let date=dt.getDate();
 this.min={year:year,
        month:month,
        date:date}
+       this.min=dt;
      let date1:NgbDate=new NgbDate(this.min.year,this.min.month,this.min.date);
       this.isDisabled =(date1:NgbDate,current:{month1:number})=>{date1.before({year:this.min.year,month:this.min.month,day:this.min.date})};
 

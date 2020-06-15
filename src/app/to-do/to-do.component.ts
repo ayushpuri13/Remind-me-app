@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ApiService } from '../Services/api.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, NavigationStart, Router,Event} from "@angular/router";
+
+
 
 
 @Component({
@@ -14,8 +16,10 @@ export class ToDoComponent implements OnInit {
 
 
   UserEventList:any=[];
+  searchEventList:any=[];                                                   //for search array updations
+  isLoading:boolean;
 
-  constructor( private api :ApiService,private route:ActivatedRoute) {
+  constructor( private api :ApiService,private route:ActivatedRoute,private router:Router) {
 
 
    }
@@ -24,9 +28,17 @@ export class ToDoComponent implements OnInit {
     this.route.data.subscribe(data=>
     {
       console.log(data);
-      this.UserEventList=data.UserEventList;
+      this.searchEventList=data.UserEventList;
+      this.UserEventList=this.searchEventList;
     })
-    console.log(this.UserEventList);
+
+    this.router.events.subscribe((event:Event) => {
+      if (event instanceof NavigationStart) {
+        this.isLoading=true;
+        console.log(event);
+      }
+      else this.isLoading=false;
+    })
 
   }
 

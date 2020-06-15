@@ -21,6 +21,17 @@ import { ToDoComponent } from './to-do/to-do.component';
 import { AddEventComponent } from './dashboard/add-event/add-event.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {Resolver} from "./shared/resolver";
+import {CardModule} from 'primeng/card';
+
+import {ButtonModule} from 'primeng/button';
+
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
+import {CalendarModule} from 'primeng/calendar';
+
+
+
+
 
 
 
@@ -45,6 +56,10 @@ import {Resolver} from "./shared/resolver";
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
+    CardModule,
+    ButtonModule,
+    ProgressSpinnerModule,
+    CalendarModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
